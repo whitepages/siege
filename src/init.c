@@ -110,7 +110,7 @@ init_config( void )
   if (strlen(my.uagent) < 1) 
     snprintf( 
       my.uagent, sizeof(my.uagent),
-      "JoeDog/1.00 [en] (X11; I; Siege %s)", version_string 
+      "JoeDog/1.00 (X11; I; Siege %s; en)", version_string 
     );
 
   if (strlen(my.conttype) < 1) 
