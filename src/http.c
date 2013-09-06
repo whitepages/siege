@@ -31,6 +31,7 @@
 #include <joedog/defs.h>
 
 #define MAXFILE 10240
+#define MAX_URI_PATH (16*1024)
 
 private char *__parse_pair(char **str);
 private char *__dequote(char *str);
@@ -106,7 +107,7 @@ http_get(CONN *C, URL U)
   char   encoding[512];
   char   *request;
   char   portstr[16];
-  char   fullpath[4096];
+  char   fullpath[MAX_URI_PATH];
   char   cookie[MAX_COOKIE_SIZE+8];
   time_t now;
   char * ifmod = url_get_if_modified_since(U);
@@ -249,7 +250,7 @@ http_post(CONN *C, URL U)
   char * protocol; 
   char * keepalive;
   char   cookie[MAX_COOKIE_SIZE];
-  char   fullpath[4096];
+  char   fullpath[MAX_URI_PATH];
 
   memset(hoststr, '\0', sizeof(hoststr));
   memset(cookie,  '\0', sizeof(cookie));
