@@ -542,7 +542,7 @@ main(int argc, char *argv[])
   );
   fprintf(stderr, "Elapsed time:\t\t%12.2f secs\n",        data_get_elapsed(D));
   fprintf(stderr, "Data transferred:\t%12.2f MB\n",        data_get_megabytes(D)); /*%12llu*/
-  fprintf(stderr, "Response time:\t\t%12.2f secs\n",       data_get_response_time(D));
+  fprintf(stderr, "Response time:\t\t%12.3f secs\n",       data_get_response_time(D));
   fprintf(stderr, "Transaction rate:\t%12.2f trans/sec\n", data_get_transaction_rate(D));
   fprintf(stderr, "Throughput:\t\t%12.2f MB/sec\n",        data_get_throughput(D));
   fprintf(stderr, "Concurrency:\t\t%12.2f\n",              data_get_concurrency(D));
@@ -551,8 +551,8 @@ main(int argc, char *argv[])
     fprintf(stderr, "HTTP OK received:\t%12u\n",             data_get_ok200(D));
   }
   fprintf(stderr, "Failed transactions:\t%12u\n",          my.failed);
-  fprintf(stderr, "Longest transaction:\t%12.2f\n",        data_get_highest(D));
-  fprintf(stderr, "Shortest transaction:\t%12.2f\n",       data_get_lowest(D));
+  fprintf(stderr, "Longest transaction:\t%12.3f\n",        data_get_highest(D));
+  fprintf(stderr, "Shortest transaction:\t%12.3f\n",       data_get_lowest(D));
   fprintf(stderr, " \n");
   if(my.mark)    mark_log_file(my.markstr);
   if(my.logging) log_transaction(D);

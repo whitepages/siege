@@ -234,7 +234,7 @@ __http(CONN *C, URL U, CLIENT *client)
     if (my.verbose && !my.get) {
       NOTIFY ( 
         ERROR,
-        "%s %d %6.2f secs: %7d bytes ==> %s\n",
+        "%s %d %7.3f secs: %7d bytes ==> %s\n",
         "UNSPPRTD", 501, 0.00, 0, "PROTOCOL NOT SUPPORTED BY SIEGE" 
       );
     } /* end if my.verbose */
@@ -324,25 +324,25 @@ __http(CONN *C, URL U, CLIENT *client)
     char *time_str = (my.timestamp==TRUE)?timestamp():"";
     if (my.csv) {
       if (my.display)
-        DISPLAY(color, "%s%s%s%4d,%s,%d,%6.2f,%7lu,%s,%d,%s",
+        DISPLAY(color, "%s%s%s%4d,%s,%d,%7.3f,%7lu,%s,%d,%s",
         time_str, (my.mark)?my.markstr:"", (my.mark)?",":"", client->id, head->head, head->code, 
         etime, bytes, url_get_display(U), url_get_ID(U), fmtime
       );
       else
-        DISPLAY(color, "%s%s%s%s,%d,%6.2f,%7lu,%s,%d,%s",
+        DISPLAY(color, "%s%s%s%s,%d,%7.3f,%7lu,%s,%d,%s",
           time_str, (my.mark)?my.markstr:"", (my.mark)?",":"", head->head, head->code, 
           etime, bytes, url_get_display(U), url_get_ID(U), fmtime
         );
     } else {
       if (my.display)
         DISPLAY(
-          color, "%s%4d: %s %d %6.2f secs: %7lu bytes ==> %-4s %s", client->id,
+          color, "%s%4d: %s %d %7.3f secs: %7lu bytes ==> %-4s %s", client->id,
           time_str, head->head, head->code, etime, bytes, url_get_method_name(U), 
 		  url_get_display(U)
         ); 
       else
         DISPLAY ( 
-          color, "%s%s %d %6.2f secs: %7lu bytes ==> %-4s %s", 
+          color, "%s%s %d %7.3f secs: %7lu bytes ==> %-4s %s", 
           time_str, head->head, head->code, etime, bytes, url_get_method_name(U), 
 		  url_get_display(U)
         );
@@ -514,7 +514,7 @@ __ftp(CONN *C, URL U, CLIENT *client)
     if (my.verbose) {
       int  color = __select_color(C->ftp.code);
       DISPLAY ( 
-        color, "FTP/%d %6.2f secs: %7lu bytes ==> %-6s %s", 
+        color, "FTP/%d %7.3f secs: %7lu bytes ==> %-6s %s", 
         C->ftp.code, 0.0, bytes, url_get_method_name(U), url_get_request(U)
       );
     }
@@ -576,7 +576,7 @@ __ftp(CONN *C, URL U, CLIENT *client)
   if (my.verbose) {
     int  color = __select_color(code);
     DISPLAY ( 
-      color, "FTP/%d %6.2f secs: %7lu bytes ==> %-6s %s", 
+      color, "FTP/%d %7.3f secs: %7lu bytes ==> %-6s %s", 
       code, etime, bytes, url_get_method_name(U), url_get_request(U)
     );
   }
